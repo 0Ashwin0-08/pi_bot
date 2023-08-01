@@ -81,6 +81,23 @@
         </xacro:inertial_box>
         -->
     </link>
+    
+    <!-- CHASSIS TOP -->
+
+    <joint name="chassis_top_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_top"/>
+        <origin xyz="${-wheel_offset_x} 0 ${chassis_height-wheel_offset_z}"/>
+    </joint>
+    <link name="chassis_top">
+        <visual>
+            <origin xyz="0.025 0 ${(chassis_height/2)-wheel_offset_z}"/>
+            <geometry>
+                <box size="0.05 ${chassis_width} ${chassis_height}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+    </link>
 
     <!-- LEFT WHEEL LINK -->
 
