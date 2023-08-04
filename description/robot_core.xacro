@@ -84,6 +84,9 @@
         </xacro:inertial_box>
         
     </link>
+    <gazebo reference="chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
     
     <!-- CHASSIS TOP -->
 
@@ -106,10 +109,13 @@
                 <box size="0.05 ${chassis_width} ${chassis_height}"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
+        <xacro:inertial_box mass="0.03" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
             <origin xyz="0.025 0 ${(chassis_height/2)-wheel_offset_z}" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
+    <gazebo reference="chassis_top">
+        <material>Gazebo/White</material>
+    </gazebo>
 
     <!-- LEFT WHEEL LINK -->
 
@@ -138,10 +144,10 @@
         
     </link>
 
-    <!--<gazebo reference="left_wheel">
-        <material>Gazebo/Blue</material>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Black</material>
     </gazebo>
-    -->
+    
 
 
 
@@ -172,10 +178,10 @@
         
     </link>
 
-    <!--<gazebo reference="right_wheel">
-        <material>Gazebo/Blue</material>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Black</material>
     </gazebo>
-    -->
+    
 
     <!-- CASTER WHEEL LINK -->
 
@@ -204,10 +210,10 @@
         
     </link>
 
-    <!--<gazebo reference="caster_wheel">
-        <material>Gazebo/White</material>
+    <gazebo reference="caster_wheel">
+        <material>Gazebo/Black</material>
         <mu1 value="0.001"/>
         <mu2 value="0.001"/>
     </gazebo>
-    -->
+    
 </robot>
