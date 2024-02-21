@@ -91,11 +91,12 @@
         <child link="chassis_top"/>
         <origin xyz="${-wheel_offset_x} 0 ${chassis_height-wheel_offset_z}"/>
     </joint>
+    
     <link name="chassis_top">
         <visual>
-            <origin xyz="0.025 0 ${(chassis_height/2)-wheel_offset_z}"/>
+            <origin xyz="0.025 0 ${(chassis_height/3)-wheel_offset_z}"/>
             <geometry>
-                <box size="0.05 ${chassis_width} ${chassis_height}"/>
+                <box size="0.05 ${chassis_width} ${chassis_height/3}"/>
             </geometry>
             <material name="white"/>
         </visual>
