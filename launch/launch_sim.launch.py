@@ -5,7 +5,10 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
+from launch.actions import TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.actions import RegisterEventHandler
+from launch.event_handlers import OnProcessExit
 
 from launch_ros.actions import Node
 
@@ -38,10 +41,26 @@ def generate_launch_description():
                         output='screen')
 
 
+    delayed_controller_manager_spawner = TimerAction(
+        period=1.0,
+        actions=[
+            Node(
+                package="controller_manager",
+                executable="spawner",
+                arguments=["diff_cont"],
+            ),
+            Node(
+                package="controller_manager",
+                executable="spawner",
+                arguments=["joint_broad"],
+            )
+        ],
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        delayed_controller_manager_spawner,
     ])
